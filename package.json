@@ -1,0 +1,24 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "* Figma\r * Картинки",
+  "main": "index.js",
+  "scripts": {
+    "start": "css-to-bem-file-structure pages/style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergeitovpeko/mesto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergeitovpeko/mesto/issues"
+  },
+  "homepage": "https://github.com/sergeitovpeko/mesto#readme",
+  "devDependencies": {
+    "css-to-bem-file-structure": "^0.0.5"
+  }
+}

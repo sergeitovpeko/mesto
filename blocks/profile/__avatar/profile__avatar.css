@@ -1,0 +1,17 @@
+.profile__avatar {
+  box-sizing: content-box;
+  width: 169px;
+  height: 128px;
+  position: absolute;
+  top: -4px;
+  left: -23px;
+}
+@media (max-width: 767px) {
+  .profile__avatar {
+    width: 169px;
+    height: 128px;
+    position: absolute;
+    top: -4px;
+    left: 58px;
+    }
+}
