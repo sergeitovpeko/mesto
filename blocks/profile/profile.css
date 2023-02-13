@@ -5,9 +5,17 @@
   position: relative;
   margin: 0 auto;
 }
+
+@media (max-width: 1023px) {
+  .profile {
+    max-width: 586px;
+  }
+}
+
 @media (max-width: 767px) {
   .profile {
     flex-direction: column;
     max-width: 282px;
+    min-height: 276px;
     }
 }

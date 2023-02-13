@@ -8,6 +8,14 @@
   width: 24px;
   height: 24px;
 }
+
+@media (max-width: 1023px) {
+  .profile__button_type-edit {
+    top: 5px;
+    right: 110px;
+  }
+}
+
 @media (max-width: 767px) {
   .profile__button_type-edit {
     top: 8px;

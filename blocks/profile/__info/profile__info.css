@@ -7,9 +7,16 @@
   max-width: 336px;
   margin: 22px 0 12px 150px;
 }
+
+@media (max-width: 1023px) {
+  .profile__info {
+    margin-left: 130px;
+  }
+}
+
 @media (max-width: 767px) {
   .profile__info {
     max-width: 282px;
-    margin: 146px 0 36px 0;
+    margin: 146px 0 0 0;
     }
 }

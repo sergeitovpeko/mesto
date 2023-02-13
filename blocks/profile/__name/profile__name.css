@@ -8,12 +8,18 @@
   margin: 0;
   padding-bottom: 16px;
 }
+
+@media (max-width: 1023px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+  }
+}
+
 @media (max-width: 767px) {
   .profile__name {
     margin: 0 auto;
     padding-bottom: 14px;
-    font-size: 27px;
-    line-height: 33px;
     text-align: center;
     }
 }
