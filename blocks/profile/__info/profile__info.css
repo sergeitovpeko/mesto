@@ -1,22 +1,23 @@
 .profile__info {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  position: relative;
+  flex-wrap: nowrap;
+  grid-area: name-edit;
   box-sizing: border-box;
   max-width: 336px;
-  margin: 22px 0 12px 150px;
+  margin: 0;
+  padding-top: 22px;
 }
 
 @media (max-width: 1023px) {
   .profile__info {
-    margin-left: 130px;
+    padding-top: 15px;
+    max-width: 298px;
   }
 }
 
 @media (max-width: 767px) {
   .profile__info {
     max-width: 282px;
-    margin: 146px 0 0 0;
+    padding: 22px 19px 14px 46px;
     }
 }

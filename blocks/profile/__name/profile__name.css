@@ -3,10 +3,11 @@
   font-style: normal;
   font-weight: 500;
   font-size: 42px;
-  line-height: 114%;
+  line-height: 48px;
   color: #FFFFFF;
+  box-sizing: border-box;
+  padding-right: 18px;
   margin: 0;
-  padding-bottom: 16px;
 }
 
 @media (max-width: 1023px) {
@@ -18,8 +19,7 @@
 
 @media (max-width: 767px) {
   .profile__name {
-    margin: 0 auto;
-    padding-bottom: 14px;
+    padding-right: 10px;
     text-align: center;
     }
 }
