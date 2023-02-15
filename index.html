@@ -14,7 +14,6 @@
     <!-- Шапка -->
     <header class="header">
       <img class="header__logo" src="./images/logo.svg" alt="Логотип">
-      <div class="header__line"></div>
     </header>
 
     
@@ -28,10 +27,10 @@
         </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__button profile__button_type-edit"></button>
+          <button class="profile__button profile__button_type-edit" type="button"></button>
         </div>
         <p class="profile__job">Исследователь океана</p>
-        <button class="profile__button profile__button_type-add"></button>
+        <button class="profile__button profile__button_type-add" type="button"></button>
       </section>
 
 
@@ -42,42 +41,42 @@
             <img class="elements__image" src="./images/vladivostok.jpg" alt="Фотография Золотого моста во Владивостоке">
             <div class="elements__info">
               <h2 class="elements__title">Владивосток</h2>
-              <button class="elements__button"></button>
+              <button class="elements__button" type="button"></button>
             </div>
           </li>
           <li class="elements__list-item">
             <img class="elements__image" src="./images/khabarovsk.jpg" alt="Фотография Хабаровский мост">
             <div class="elements__info">
               <h2 class="elements__title">Хабаровск</h2>
-              <button class="elements__button"></button>
+              <button class="elements__button" type="button"></button>
             </div>
           </li>
           <li class="elements__list-item">
             <img class="elements__image" src="./images/petropavlovsk-kamchatskiy.jpg" alt=" Петропавловск-Камчатский на фоне вулканов">
             <div class="elements__info">
               <h2 class="elements__title">Камчатка</h2>
-              <button class="elements__button"></button>
+              <button class="elements__button" type="button"></button>
             </div>
           </li>
           <li class="elements__list-item">
             <img class="elements__image" src="./images/sakhalin.jpg" alt="Фотография маяка Анива">
             <div class="elements__info">
               <h2 class="elements__title">Сахалин</h2>
-              <button class="elements__button"></button>
+              <button class="elements__button" type="button"></button>
             </div>
           </li>
           <li class="elements__list-item">
             <img class="elements__image" src="./images/amurskaya-oblast'.jpg" alt="Фотография поезда в лесистой местности">
             <div class="elements__info">
               <h2 class="elements__title">Амурская область</h2>
-              <button class="elements__button"></button>
+              <button class="elements__button" type="button"></button>
             </div>
           </li>
           <li class="elements__list-item">
             <img class="elements__image" src="./images/buryatiya.jpg" alt="Фотография тюльпанов на фоне гор">
             <div class="elements__info">
               <h2 class="elements__title">Бурятия</h2>
-              <button class="elements__button"></button>
+              <button class="elements__button" type="button"></button>
             </div>
           </li>
         </ul>
@@ -95,11 +94,11 @@
   <!-- Модальное окно -->
   <section class="popup">
     <div class="popup__container">
-      <button class="popup__close"></button>
+      <button class="popup__close" type="reset"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="popup-form" action="#">
-        <input class="popup__input-text" type="text" name="name" value="Жак-Ив Кусто">
-        <input class="popup__input-text" type="text" name="job" value="Исследователь океана">
+        <input class="popup__input-text popup__input-text_name" type="text" name="name" placeholder="Имя">
+        <input class="popup__input-text popup__input-text_job" type="text" name="job" placeholder="Профессия">
         <button class="popup__save" type="submit">Сохранить</button>
       </form>
     </div>

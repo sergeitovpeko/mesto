@@ -1,7 +1,6 @@
 .profile__button_type-edit {
   background-image: url(../../../../images/edit-button.svg);
   background-size: cover;
-  grid-area: name-edit;
   margin-top: 15px;
   width: 24px;
   height: 24px;

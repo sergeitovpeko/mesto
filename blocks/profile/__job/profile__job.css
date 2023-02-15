@@ -7,6 +7,16 @@
   color: white;
   grid-area: job;
   margin: 0;
+  max-width: 550px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 1023px) {
+  .profile__job {
+    max-width: 290px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -15,5 +25,6 @@
     line-height: 17px;
     text-align: center;
     margin: 0 auto;
+    max-width: 282px;
     }
 }
