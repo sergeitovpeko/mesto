@@ -1,4 +1,4 @@
-.popup__input-text {
+.form__item {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -12,6 +12,6 @@
   padding: 0 0 13px 0;
   margin: 0;
 }
-.popup__input-text:focus {
+.form__item:focus {
   outline-style: none;
 }

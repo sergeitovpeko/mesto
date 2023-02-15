@@ -7,8 +7,8 @@ let formElement = document.querySelector('.popup__form');
 let nameProfile = document.querySelector ('.profile__name')
 let jobProfile = document.querySelector ('.profile__job')
 
-let nameInput = popup.querySelector('.popup__input-text_name');
-let jobInput = popup.querySelector('.popup__input-text_job');
+let nameInput = popup.querySelector('.form__item_name_input');
+let jobInput = popup.querySelector('.form__item_job_input');
 
 
 // Открытие и закрытие попапа по нажатию на крестик
@@ -31,7 +31,6 @@ function handleFormSubmit (evt) {
   evt.preventDefault();
  
   nameProfile.textContent = nameInput.value.trim();
-  console.log();
   jobProfile.textContent = jobInput.value.trim();
 
   closePopup();
