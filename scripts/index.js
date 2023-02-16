@@ -7,8 +7,8 @@ let formElement = document.querySelector('.popup__form');
 let nameProfile = document.querySelector ('.profile__name')
 let jobProfile = document.querySelector ('.profile__job')
 
-let nameInput = popup.querySelector('.popup__form-item_name_input');
-let jobInput = popup.querySelector('.popup__form-item_job_input');
+let nameInput = popup.querySelector('.popup__form-item_input_name');
+let jobInput = popup.querySelector('.popup__form-item_input_job');
 
 
 // Открытие и закрытие попапа по нажатию на крестик
