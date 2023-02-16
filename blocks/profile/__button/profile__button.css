@@ -2,6 +2,7 @@
   border-color: rgba(255, 255, 255, 1);
   background-color: rgb(0, 0, 0);
   background-repeat: no-repeat;
+  background-position: center;
   border: none;
   cursor: pointer;
   box-sizing: border-box;
