@@ -34,53 +34,23 @@
       </section>
 
 
-      <!-- Фотографии -->
+      <!-- Карточки -->
       <section class="elements">
-        <ul class="elements__list">
-          <li class="elements__list-item">
-            <img class="elements__image" src="./images/vladivostok.jpg" alt="Фотография Золотого моста во Владивостоке">
-            <div class="elements__info">
-              <h2 class="elements__title">Владивосток</h2>
-              <button class="elements__button" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__list-item">
-            <img class="elements__image" src="./images/khabarovsk.jpg" alt="Фотография Хабаровский мост">
-            <div class="elements__info">
-              <h2 class="elements__title">Хабаровск</h2>
-              <button class="elements__button" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__list-item">
-            <img class="elements__image" src="./images/petropavlovsk-kamchatskiy.jpg" alt=" Петропавловск-Камчатский на фоне вулканов">
-            <div class="elements__info">
-              <h2 class="elements__title">Камчатка</h2>
-              <button class="elements__button" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__list-item">
-            <img class="elements__image" src="./images/sakhalin.jpg" alt="Фотография маяка Анива">
-            <div class="elements__info">
-              <h2 class="elements__title">Сахалин</h2>
-              <button class="elements__button" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__list-item">
-            <img class="elements__image" src="./images/amurskaya-oblast'.jpg" alt="Фотография поезда в лесистой местности">
-            <div class="elements__info">
-              <h2 class="elements__title">Амурская область</h2>
-              <button class="elements__button" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__list-item">
-            <img class="elements__image" src="./images/buryatiya.jpg" alt="Фотография тюльпанов на фоне гор">
-            <div class="elements__info">
-              <h2 class="elements__title">Бурятия</h2>
-              <button class="elements__button" type="button"></button>
-            </div>
-          </li>
-        </ul>
-      </section>
+              <ul class="elements__list"></ul>
+            </section>
+
+
+      <!-- Template - заготовка -->
+      <template id="template">
+        <li class="elements__list-item">
+          <img class="elements__image" src="" alt="Фотография">
+          <div class="elements__info">
+            <h2 class="elements__title"></h2>
+            <button class="elements__button elements__button_like" type="button"></button>
+            <button class="elements__button elements__button_delete" type="button"></button>
+          </div>
+        </li>
+      </template>
     </main>
 
 
@@ -91,19 +61,45 @@
   </div>
 
 
-  <!-- Модальное окно -->
-  <section class="popup">
+  <!-- Модальные окна-->
+
+  <!-- Форма именения персональной информации -->
+  <section class="popup" id="edit">
     <div class="popup__container">
-      <button class="popup__close" type="button"></button>
+      <button class="popup__close" name="close-edit" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="popup-form" action="#">
         <input class="popup__form-item popup__form-item_input_name" type="text" name="name" placeholder="Имя">
         <input class="popup__form-item popup__form-item_input_job" type="text" name="job" placeholder="Профессия">
         <button class="popup__save" type="submit">Сохранить</button>
-      </form>
-      
+      </form>      
     </div>
   </section>
+
+
+  <!-- Форма добавления новой карточки -->
+  <section class="popup" id="add">
+    <div class="popup__container">
+      <button class="popup__close" name="close-add" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" id="add-form" action="#">
+        <input class="popup__form-item popup__form-item_input_name" type="text" id="name" placeholder="Название">
+        <input class="popup__form-item popup__form-item_input_job" type="text" id="link" placeholder="Ссылка на картинку">
+        <button class="popup__save" type="submit">Создать</button>
+      </form>      
+    </div>
+  </section>
+
+
+  <!-- Попап с картинкой -->
+  <section class="popup" id="image">
+    <div class="popup__container popup__container_image">
+      <button class="popup__close" name="close-add" type="button"></button>
+      <img class="popup__image" src="" alt="">
+      <h2 class="popup__image-name">Название картинки</h2>
+    </div>
+  </section>
+
 
   <script src="./scripts/index.js"></script>
 </body>
