@@ -94,7 +94,7 @@ function handleFormSubmit (evt) {
 editButton.addEventListener('click', handleEditButtonClick);
 // closeButton.addEventListener('click', closePopup);
 closeButton.addEventListener('click', () => {
-  closePopup(popupAdd);
+  closePopup(popup);
 });
   
 formElement.addEventListener('submit', handleFormSubmit); 
