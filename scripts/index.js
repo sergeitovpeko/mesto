@@ -108,7 +108,7 @@ formElement.addEventListener('submit', handleFormSubmit);
 
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
-}
+});
 
 closeAddButton.addEventListener('click', () => {
   closePopup(popupAdd);
@@ -156,7 +156,7 @@ const getElement = (item) => {
 
   // Открытие и закрытие попапа с картинкой
   const handleImagePopupClick = (evt) => {
-    imagePopup.classList.add('popup_opened-image');
+    imagePopup.classList.add('popup_opened');
     bigImage.src = evt.target.src;
     bigImage.alt = evt.target.alt;
     nameImage.textContent = evt.target.alt;
@@ -171,7 +171,7 @@ const getElement = (item) => {
 
   newElementPicture.addEventListener('click', handleImagePopupClick);
   closeImagePopup.addEventListener('click', () => {
-    closePopup(imagePopup)
+  closePopup(imagePopup)
   });
 
   return newElement;
@@ -184,7 +184,7 @@ const renderElement = (wrap, item) => {
   wrap.prepend(getElement(item));
 }
 
-initialCards.forEach((item) => {
+initialCards.forEach(item => {
   renderElement(elementsList, item);
 });
 
@@ -198,7 +198,7 @@ form.addEventListener('submit', (evt) => {
   const item = { name: name.value, link: image.value };
 
   renderElement(elementsList, item);
-  closePopupAdd();
+  closePopup(imagePopup);
   evt.target.reset();
 });
 
