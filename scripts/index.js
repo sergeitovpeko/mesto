@@ -198,7 +198,7 @@ form.addEventListener('submit', (evt) => {
   const item = { name: name.value, link: image.value };
 
   renderElement(elementsList, item);
-  closePopup(imagePopup);
+  closePopup(popupAdd);
   evt.target.reset();
 });
 
