@@ -1,10 +1,15 @@
 .popup {
   font-family: "Inter", "Arial", sans-serif;
   background-color: rgba(0, 0, 0, .5);
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
   position: fixed;
+  opacity: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: all 0.6s ease 0s;
   top: 0;
   left: 0;
   width: 100%;

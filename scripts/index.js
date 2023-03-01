@@ -20,13 +20,11 @@ const form = document.querySelector('#add-form');
 const template = document.querySelector('#template');
 
 
-const image = document.querySelector('.elements__image');
 const imagePopup = document.querySelector('#image');
 const closeImagePopup = imagePopup.querySelector('.popup__close');
 
 const bigImage = document.querySelector('.popup__image');
 const nameImage = document.querySelector('.popup__image-name');
-const elementsImage = document.querySelector('.elements__image');
 const elementsTitle = document.querySelector('.elements__title');
 
 
@@ -132,32 +130,14 @@ const handleLike = (evt) => {
 
 
 
-
-
-
-
-// Открытие и закрытие попапа с картинкой
-const handleImagePopupClick = (evt) => {
-  imagePopup.classList.add('popup_opened-image');
-  bigImage.src = evt.target.src;
-  nameImage.textContent = elementsTitle.textContent;
-}
-
-
-const closeImgPopup = () => {
-  imagePopup.classList.remove('popup_opened-image');
-}
-
-
-
-
 // Функция добавления новой карточки
 const getElement = (item) => {
   const newElement = template.content.cloneNode(true);
   const newElementTitle = newElement.querySelector('.elements__title');
         newElementTitle.textContent = (item.name);
   const newElementPicture = newElement.querySelector('.elements__image');
-        newElementPicture.src = (item.link);
+  newElementPicture.src = (item.link);
+  newElementPicture.alt = (item.name);
   
 
   const deleteButton = newElement.querySelector('.elements__button_delete');
@@ -165,8 +145,24 @@ const getElement = (item) => {
 
   deleteButton.addEventListener('click', handleDelete);
   likeButton.addEventListener('click', handleLike);
+
+
+
+
+
+  // Открытие и закрытие попапа с картинкой
+  const handleImagePopupClick = (evt) => {
+    imagePopup.classList.add('popup_opened-image');
+    bigImage.src = evt.target.src;
+    bigImage.alt = evt.target.alt;
+    nameImage.textContent = evt.target.alt;
+  }
+  
+  const closeImgPopup = () => {
+    imagePopup.classList.remove('popup_opened-image');
+  }
+
   newElementPicture.addEventListener('click', handleImagePopupClick);
-  newElementTitle.addEventListener('click', handleImagePopupClick);
   closeImagePopup.addEventListener('click', closeImgPopup);
 
   return newElement;
@@ -192,6 +188,7 @@ initialCards.forEach((item) => {
 
 
 
+
 // Слушатель формы добавления новой карточки
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -203,165 +200,3 @@ form.addEventListener('submit', (evt) => {
   closePopupAdd();
   evt.target.reset();
 });
-
-
-
-
-
-
-
-
-
-
-
-// image.addEventListener('click', handleImagePopupClick);
-// closeImagePopup.addEventListener('click', closeImgPopup);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const ul = document.querySelector('.elements__list');
-// const t = document.querySelector('#template');
-
-// const element = template.content.cloneNode(true);
-// element.querySelector('.elements__image').src = 'https://images.unsplash.com/photo-1634545042913-fd935f23b144?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80';
-// element.querySelector('.elements__title').textContent = 'Владивосток';
-// ul.append(element);
-
-
-
-// const pictire = t.content.querySelector('.elements-image');
-// const title = t.content.querySelector('.elements-title');
-
-// pictire.content = 'https://unsplash.com/photos/fiMa6BU28gU?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink';
-// title.textContent = 'Владивосток';
-
-// let li = t.content.cloneNode(true);
-// ul.append(li);
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const renderElement = (wrap, item) => {
-//   wrap.insertAdjacentHTML('beforebegin', `
-//         <li class="elements__list-item">
-//           <img class="elements__image" src="${item.link}" alt="Фотография">
-//           <div class="elements__info">
-//             <h2 class="elements__title">${item.name}</h2>
-//             <button class="elements__button" type="button"></button>
-//           </div>
-//         </li>`)
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Создание template элементов
-// const elementsListWrapper = document.querySelector('.elements__list');
-// const template = document.getElementById('element');
-
-// const getElement = (name, link) => {
-//   const newElement = template.content.cloneNode(true);
-//   const newElementTitle = newElement.querySelector('.elements__title');
-//         newElementTitle.textContent = name;
-//   const newElementPicture = newElement.querySelector('.element-picture');
-//         newElementPicture.textContent = link
-//   return newElement;
-// }
-
-// const renderElement = (wrap, name, link) => {
-//   wrap.append(getElement(name));
-//   wrap.append(getElement(link));
-// }
-
-// initialCards.forEach((name, link) => {
-//   renderElement(ElementsListWrapper, name);
-//   renderElement(ElementsListWrapper, link);
-// });
