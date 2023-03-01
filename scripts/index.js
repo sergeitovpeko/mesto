@@ -20,6 +20,16 @@ const form = document.querySelector('#add-form');
 const template = document.querySelector('#template');
 
 
+const image = document.querySelector('.elements__image');
+const imagePopup = document.querySelector('#image');
+const closeImagePopup = imagePopup.querySelector('.popup__close');
+
+const bigImage = document.querySelector('.popup__image');
+const nameImage = document.querySelector('.popup__image-name');
+const elementsImage = document.querySelector('.elements__image');
+const elementsTitle = document.querySelector('.elements__title');
+
+
 
 
 
@@ -126,14 +136,17 @@ const handleLike = (evt) => {
 
 
 
+// Открытие и закрытие попапа с картинкой
+const handleImagePopupClick = (evt) => {
+  imagePopup.classList.add('popup_opened-image');
+  bigImage.src = evt.target.src;
+  nameImage.textContent = elementsTitle.textContent;
+}
 
 
-
-
-
-
-
-
+const closeImgPopup = () => {
+  imagePopup.classList.remove('popup_opened-image');
+}
 
 
 
@@ -152,6 +165,9 @@ const getElement = (item) => {
 
   deleteButton.addEventListener('click', handleDelete);
   likeButton.addEventListener('click', handleLike);
+  newElementPicture.addEventListener('click', handleImagePopupClick);
+  newElementTitle.addEventListener('click', handleImagePopupClick);
+  closeImagePopup.addEventListener('click', closeImgPopup);
 
   return newElement;
 }
@@ -195,30 +211,11 @@ form.addEventListener('submit', (evt) => {
 
 
 
-// Открытие и закрытие попапа с картинкой
-
-const image = document.querySelector('.elements__image');
-const imagePopup = document.querySelector('#image');
-const closeImagePopup = imagePopup.querySelector('.popup__close');
-
-const bigImage = document.querySelector('.popup__image');
-const nameImage = document.querySelector('.popup__image-name');
-const elementsImage = document.querySelector('.elements__image');
-const elementsTitle = document.querySelector('.elements__title');
-
-const handleImagePopupClick = (evt) => {
-  imagePopup.classList.add('popup_opened-image');
-  bigImage.src = evt.target.src;
-  nameImage.textContent = elementsTitle.textContent;
-}
-
-const closeImgPopup = () => {
-  imagePopup.classList.remove('popup_opened-image');
-}
 
 
-image.addEventListener('click', handleImagePopupClick);
-closeImagePopup.addEventListener('click', closeImgPopup);
+
+// image.addEventListener('click', handleImagePopupClick);
+// closeImagePopup.addEventListener('click', closeImgPopup);
 
 
 
