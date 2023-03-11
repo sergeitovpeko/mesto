@@ -68,9 +68,15 @@
     <div class="popup__container">
       <button class="popup__close" name="close-edit" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="popup-form" action="#">
-        <input class="popup__form-item popup__form-item_input_name" type="text" name="name" placeholder="Имя">
-        <input class="popup__form-item popup__form-item_input_job" type="text" name="job" placeholder="Профессия">
+      <form class="popup__form" name="signIn" action="#" novalidate>
+        <div class="popup__form-input">
+          <input class="popup__form-item popup__form-item_input_name" type="text" name="name" placeholder="Имя" minlength="2" maxlength="40" required>
+          <span class="popup__form-error popup__form-error_active" id="error-profile"></span>
+        </div>
+        <div class="popup__form-input">
+          <input class="popup__form-item popup__form-item_input_job" type="text" name="job" placeholder="Профессия" minlength="2" maxlength="200" required>
+          <span class="popup__form-error popup__form-error_active" id="error-profile"></span>
+        </div>
         <button class="popup__save" type="submit">Сохранить</button>
       </form>      
     </div>
@@ -82,9 +88,15 @@
     <div class="popup__container">
       <button class="popup__close" name="close-add" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" id="add-form" action="#">
-        <input class="popup__form-item popup__form-item_input_name" type="text" id="name" placeholder="Название">
-        <input class="popup__form-item popup__form-item_input_job" type="text" id="link" placeholder="Ссылка на картинку">
+      <form class="popup__form" id="add-form" action="#" novalidate>
+        <div class="popup__form-input">
+          <input class="popup__form-item popup__form-item_input_name" type="text" id="name" placeholder="Название" minlength="2" maxlength="30" required>
+          <span class="popup__form-error popup__form-error_active" id="error-place"></span>
+        </div>
+        <div class="popup__form-input">
+          <input class="popup__form-item popup__form-item_input_job" type="url" id="link" placeholder="Ссылка на картинку" required>
+          <span class="popup__form-error popup__form-error_active" id="error-place"></span>
+        </div>
         <button class="popup__save" type="submit">Создать</button>
       </form>      
     </div>
@@ -101,6 +113,7 @@
   </section>
 
 
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>

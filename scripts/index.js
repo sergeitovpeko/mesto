@@ -12,7 +12,6 @@ const jobInput = popup.querySelector('.popup__form-item_input_job');
 
 const addButton = document.querySelector('.profile__button_type-add');
 const popupAdd = document.querySelector('#add');
-console.log(popupAdd);
 const closeAddButton = popupAdd.querySelector('.popup__close');
 
 
@@ -64,12 +63,41 @@ const initialCards = [
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupsEscape);
 };
 
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupsEscape);
 };
+
+
+
+
+
+
+
+// const closePopupOverlay = (evt) => {
+//   if (evt.target === evt.currentTarget) {
+//     closePopup(popup);
+//   };
+// };
+
+// const closePopupEsc = (evt) => {
+//   if (evt.key === 'escape') {
+//     closePopup(popup);
+//   };
+// };
+
+
+
+
+
+
+
+
+
 
 // Открытие и закрытие формы на изменение данных
 const handleEditButtonClick = () => {
@@ -92,6 +120,86 @@ function handleFormSubmit (evt) {
 }
 
 editButton.addEventListener('click', handleEditButtonClick);
+
+
+// Закрытие по нажатию на оверлей
+const closePopupsOverlay = document.querySelectorAll('.popup').forEach(popup => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(popup);
+    }
+  });
+});
+
+// Закрытие по нажатию на Escape
+const closePopupsEscape = (evt) => {
+  if (evt.key === 'Escape') {
+    console.log();
+    const popup = document.querySelector('.popup_opened')
+    closePopup(popup);
+  }
+};
+
+// const escapePopups = document.querySelectorAll('.popup').forEach(popup => {
+//   popup.addEventListener('keydown', (evt) => {
+//     if (evt.keyCode === 27) {
+//       closePopup(popup);
+//     }
+//   });
+// });
+
+
+
+
+
+// const popups = document.querySelectorAll('.popup');
+// const arrayPopups = Array.from(popups);
+// arrayPopups.forEach(popup => {
+//   popup.addEventListener('click', (evt) => {
+//     if (evt.target === 'Escape') {
+//       closePopup(popup)
+//     }
+//   });
+// });
+// console.log(arrayPopups);
+
+
+// console.log(overlayPopups);
+
+
+
+// popup.addEventListener('click', (evt) => {
+//   if (evt.target === evt.currentTarget) {
+//     closePopup(popup);
+//   };
+// });
+
+// popupAdd.addEventListener('click', (evt) => {
+//   if (evt.target === evt.currentTarget) {
+//     closePopup(popupAdd);
+//   };
+// });
+
+// imagePopup.addEventListener('click', (evt) => {
+//   if (evt.target === evt.currentTarget) {
+//     closePopup(imagePopup);
+//   };
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 closeButton.addEventListener('click', () => {
   closePopup(popup);
 });
@@ -171,10 +279,102 @@ initialCards.forEach(item => {
 // Слушатель формы добавления новой карточки
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
-
   const item = { name: name.value, link: image.value };
-
   renderElement(elementsList, item);
   closePopup(popupAdd);
   evt.target.reset();
 });
+
+form.addEventListener('submit', (evt) => {
+  const createButton = evt.submitter;
+
+  createButton.classList.add('popup__save_inactive');
+  createButton.disabled = (true);
+});
+
+
+
+
+
+
+
+const options = {
+  formSelector: '.popup__form',
+  submitSelector: '.popup__save',
+  inputSelector: '.popup__form-item',
+  inputSectionSelector: '.popup__form-input',
+  inputErrorSelector: '.popup__form-error',
+  inputErrorClass: 'popup__form-error_active',
+  disabledButtonClass: 'popup__save_inactive',
+};
+
+enableValidation(options);
+
+// const formSignIn = document.forms.signIn
+
+// formSignIn.addEventListener('submit', (evt) => {
+//   evt.preventDefault();
+//   console.log(formSignIn);
+//   formSignIn.reset();
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let formIsValid = true;
+
+// for (let i = 0; i < inputs.length; i++) {
+//   const InputElement = inputs[i];
+//   const isValid = InputElement.validity.valid;
+//   if (!isValid) {
+//     formIsValid = false;
+//     break;
+//   }
+// }
+
+
+// submitButton.disabled = '';
+// submitButton.classList.remove('popup__save_inactive');
