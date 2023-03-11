@@ -74,31 +74,6 @@ const closePopup = (popup) => {
 
 
 
-
-
-
-
-// const closePopupOverlay = (evt) => {
-//   if (evt.target === evt.currentTarget) {
-//     closePopup(popup);
-//   };
-// };
-
-// const closePopupEsc = (evt) => {
-//   if (evt.key === 'escape') {
-//     closePopup(popup);
-//   };
-// };
-
-
-
-
-
-
-
-
-
-
 // Открытие и закрытие формы на изменение данных
 const handleEditButtonClick = () => {
     openPopup(popup)
