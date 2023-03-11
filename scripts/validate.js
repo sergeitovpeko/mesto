@@ -22,19 +22,13 @@ const toggleInputState = (inputElement, options) => {
 };
 
 const enableButton = (submitButton, disabledButtonClass) => {
-  console.log(enableButton);
   submitButton.removeAttribute('disabled');
-  console.log(submitButton);
   submitButton.classList.remove(disabledButtonClass);
-  console.log(submitButton);
 };
 
 const disableButton = (submitButton, disabledButtonClass) => {
-  console.log(disableButton);
   submitButton.setAttribute('disabled', true);
-  console.log(submitButton);
   submitButton.classList.add(disabledButtonClass);
-  console.log(submitButton);
 };
 
 const toggleButtonState = (inputs, submitButton, disabledButtonClass) => {

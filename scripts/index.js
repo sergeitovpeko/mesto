@@ -1,14 +1,16 @@
 // Объявление переменных
 const editButton = document.querySelector('.profile__button_type-edit');
-const popup = document.querySelector('.popup');
-const closeButton = popup.querySelector('.popup__close');
+// const popup = document.querySelector('.popup');
+const profilePopup = document.querySelector('#edit');
+const closeButton = document.querySelector('.popup__close');
 
-const formElement = document.querySelector('.popup__form');
+// const formElement = document.querySelector('.popup__form');
+const editForm = document.querySelector('#edit-form');
 const nameProfile = document.querySelector ('.profile__name')
 const jobProfile = document.querySelector ('.profile__job')
 
-const nameInput = popup.querySelector('.popup__form-item_input_name');
-const jobInput = popup.querySelector('.popup__form-item_input_job');
+const nameInput = document.querySelector('.popup__form-item_input_name');
+const jobInput = document.querySelector('.popup__form-item_input_job');
 
 const addButton = document.querySelector('.profile__button_type-add');
 const popupAdd = document.querySelector('#add');
@@ -16,7 +18,7 @@ const closeAddButton = popupAdd.querySelector('.popup__close');
 
 
 const elementsList = document.querySelector('.elements__list');
-const form = document.querySelector('#add-form');
+const addForm = document.querySelector('#add-form');
 const template = document.querySelector('#template');
 
 
@@ -76,7 +78,7 @@ const closePopup = (popup) => {
 
 // Открытие и закрытие формы на изменение данных
 const handleEditButtonClick = () => {
-    openPopup(popup)
+    openPopup(profilePopup)
     nameInput.value = nameProfile.textContent.trim();
     jobInput.value = jobProfile.textContent.trim();
 }
@@ -90,7 +92,7 @@ function handleFormSubmit (evt) {
   nameProfile.textContent = nameInput.value.trim();
   jobProfile.textContent = jobInput.value.trim();
 
-  closePopup(popup);
+  closePopup(profilePopup);
 
 }
 
@@ -109,7 +111,6 @@ const closePopupsOverlay = document.querySelectorAll('.popup').forEach(popup => 
 // Закрытие по нажатию на Escape
 const closePopupsEscape = (evt) => {
   if (evt.key === 'Escape') {
-    console.log();
     const popup = document.querySelector('.popup_opened')
     closePopup(popup);
   }
@@ -176,10 +177,10 @@ const closePopupsEscape = (evt) => {
 
 
 closeButton.addEventListener('click', () => {
-  closePopup(popup);
+  closePopup(profilePopup);
 });
   
-formElement.addEventListener('submit', handleFormSubmit); 
+editForm.addEventListener('submit', handleFormSubmit); 
 
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
@@ -252,20 +253,21 @@ initialCards.forEach(item => {
 
 
 // Слушатель формы добавления новой карточки
-form.addEventListener('submit', (evt) => {
+addForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const item = { name: name.value, link: image.value };
   renderElement(elementsList, item);
   closePopup(popupAdd);
   evt.target.reset();
-});
 
-form.addEventListener('submit', (evt) => {
   const createButton = evt.submitter;
-
   createButton.classList.add('popup__save_inactive');
   createButton.disabled = (true);
 });
+
+// form.addEventListener('submit', (evt) => {
+
+// });
 
 
 
