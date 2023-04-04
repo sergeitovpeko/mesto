@@ -1,9 +1,10 @@
 // Cоздаём класс карточки
 export default class Card {
-  constructor(name, link, cardTemplate) {
+  constructor(name, link, cardTemplate, handleImagePopupClick) {
     this._name = name;
     this._link = link;
     this._cardTemplate = cardTemplate;
+    this._handleImagePopupClick = handleImagePopupClick;
   }
 
   _getTemplate () {
@@ -19,6 +20,10 @@ export default class Card {
   createCard = () => {
 // Переносим разметку в приватное поле
     this._element = this._getTemplate();
+    this._elementImage = this._element.querySelector('.elements__image');
+    this._elementTitle = this._element.querySelector('.elements__title');
+    this._buttonDelete = this._element.querySelector('.elements__button_delete')
+    this._buttonLike = this._element.querySelector('.elements__button_like');
     this._setEventListeners();
 
 // Передаем данные элемента списка
@@ -39,9 +44,9 @@ export default class Card {
       this._handleLike();
     });
 
-    this._element.querySelector('.elements__image').addEventListener('click', () => {
-      this._handleOpen();
-    });
+    // this._element.querySelector('.elements__image').addEventListener('click', () => {
+    //   this._handleOpen();
+    // });
   }
 
   _handleDelete() {
@@ -53,7 +58,8 @@ export default class Card {
       .classList.toggle('elements__button_like_active');
   }
 
-  _handleOpen() {
-    this._element.openPopup(imagePopup);
-  }
+  // _handleOpen() {
+  //   const imagePopup = document.querySelector('.elements__image');
+  //   this._element.openPopup(imagePopup);
+  // }
 };
