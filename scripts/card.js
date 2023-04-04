@@ -7,18 +7,16 @@ export default class Card {
     this._handleImagePopupClick = handleImagePopupClick;
   }
 
-  _getTemplate () {
-// Берём разметку из HTML и клонируем элемент списка
-    const cardElement = document.querySelector('#card-template').content
+  _getTemplate() {
+    // Берём разметку из HTML и клонируем элемент списка
+    // Возвращаем элемент списка
+    return this._cardTemplate.content
       .querySelector('.elements__list-item').cloneNode(true);
-    
-// Возвращаем элемент списка
-    return cardElement;
   }
 
-// Готовим карточки к публикации
+  // Готовим карточки к публикации
   createCard = () => {
-// Переносим разметку в приватное поле
+    // Переносим разметку в приватное поле
     this._element = this._getTemplate();
     this._elementImage = this._element.querySelector('.elements__image');
     this._elementTitle = this._element.querySelector('.elements__title');
@@ -26,40 +24,38 @@ export default class Card {
     this._buttonLike = this._element.querySelector('.elements__button_like');
     this._setEventListeners();
 
-// Передаем данные элемента списка
-    this._element.querySelector('.elements__image').src = this._link;
-    this._element.querySelector('.elements__image').alt = this._name;
-    this._element.querySelector('.elements__title').textContent = this._name;
+    // Передаем данные элемента списка
+    this._elementImage.src = this._link;
+    this._elementImage.alt = this._name;
+    this._elementTitle.textContent = this._name;
 
-// Возвращаем элемент обратно на страницу
+    // Возвращаем элемент обратно на страницу
     return this._element;
   }
 
+
   _setEventListeners() {
-    this._element.querySelector('.elements__button_delete').addEventListener('click', () => {
+    this._buttonDelete.addEventListener('click', () => {
       this._handleDelete();
     });
-    
-    this._element.querySelector('.elements__button_like').addEventListener('click', () => {
+
+
+    this._buttonLike.addEventListener('click', () => {
       this._handleLike();
     });
 
-    // this._element.querySelector('.elements__image').addEventListener('click', () => {
-    //   this._handleOpen();
-    // });
+
+    this._elementImage.addEventListener('click', () => {
+      this._handleImagePopupClick(this._elementImage);
+    });
   }
+
 
   _handleDelete() {
     this._element.remove();
   }
 
   _handleLike() {
-    this._element.querySelector('.elements__button_like')
-      .classList.toggle('elements__button_like_active');
+    this._buttonLike.classList.toggle('elements__button_like_active');
   }
-
-  // _handleOpen() {
-  //   const imagePopup = document.querySelector('.elements__image');
-  //   this._element.openPopup(imagePopup);
-  // }
 };
