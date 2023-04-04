@@ -10,7 +10,7 @@
 <body class="body">
   <div class="page">
 
-
+    
     <!-- Шапка -->
     <header class="header">
       <img class="header__logo" src="./images/logo.svg" alt="Логотип">
@@ -36,12 +36,12 @@
 
       <!-- Карточки -->
       <section class="elements">
-              <ul class="elements__list"></ul>
-            </section>
+        <ul class="elements__list">
+        </ul>
+      </section>
 
-
-      <!-- Template - заготовка -->
-      <template id="template">
+      <!-- Template - заготовка карточки -->
+      <template id="card-template">
         <li class="elements__list-item">
           <img class="elements__image" src="#" alt="">
           <div class="elements__info">
@@ -70,15 +70,17 @@
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" id="edit-form" name="signIn" action="#" novalidate>
         <div class="popup__form-input">
-          <input class="popup__form-item popup__form-item_input_name" type="text" name="name" placeholder="Имя" minlength="2" maxlength="40" required>
+          <input class="popup__form-item popup__form-item_input_name" type="text" name="name" placeholder="Имя"
+            minlength="2" maxlength="40" required>
           <span class="popup__form-error popup__form-error_active" id="error-profile"></span>
         </div>
         <div class="popup__form-input">
-          <input class="popup__form-item popup__form-item_input_job" type="text" name="job" placeholder="Профессия" minlength="2" maxlength="200" required>
+          <input class="popup__form-item popup__form-item_input_job" type="text" name="job" placeholder="Профессия"
+            minlength="2" maxlength="200" required>
           <span class="popup__form-error popup__form-error_active"></span>
         </div>
         <button class="popup__save" type="submit">Сохранить</button>
-      </form>      
+      </form>
     </div>
   </section>
 
@@ -90,15 +92,17 @@
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" id="add-form" action="#" novalidate>
         <div class="popup__form-input">
-          <input class="popup__form-item popup__form-item_input_name" type="text" id="name" placeholder="Название" minlength="2" maxlength="30" required>
+          <input class="popup__form-item popup__form-item_input_name" type="text" id="name" placeholder="Название"
+            minlength="2" maxlength="30" required>
           <span class="popup__form-error popup__form-error_active" id="error-place"></span>
         </div>
         <div class="popup__form-input">
-          <input class="popup__form-item popup__form-item_input_job" type="url" id="link" placeholder="Ссылка на картинку" required>
+          <input class="popup__form-item popup__form-item_input_job" type="url" id="link" placeholder="Ссылка на картинку"
+            required>
           <span class="popup__form-error popup__form-error_active"></span>
         </div>
         <button class="popup__save" type="submit">Создать</button>
-      </form>      
+      </form>
     </div>
   </section>
 
@@ -112,8 +116,10 @@
     </div>
   </section>
 
+  <!-- Подключение скриптов -->
+  <script src="./scripts/card.js" type="module"></script>
+  <script src="./scripts/FormValidator.js" type="module"></script>
+  <script src="./scripts/index.js" type="module"></script>
 
-  <script src="./scripts/validate.js"></script>
-  <script src="./scripts/index.js"></script>
 </body>
 </html>
