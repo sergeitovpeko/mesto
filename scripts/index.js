@@ -1,4 +1,4 @@
-import Card from './card.js';
+import Card from './Сard.js';
 import FormValidator from './FormValidator.js';
 
 // Массив карточек
@@ -64,16 +64,9 @@ const jobInput = document.querySelector('.popup__form-item_input_job');
 const container = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('#card-template');
 
-
-// const elementsList = document.querySelector('.elements__list');
-// const cardTemplate = document.querySelector('#card-template');
-
-
-
 const bigImage = document.querySelector('.popup__image');
 const nameImage = document.querySelector('.popup__image-name');
-const elementsTitle = document.querySelector('.elements__title');
-
+// const elementsTitle = document.querySelector('.elements__title');
 
 const name = document.querySelector('#name');
 const image = document.querySelector('#link');
@@ -86,18 +79,23 @@ const handleImagePopupClick = (data) => {
   nameImage.textContent = data.alt;
 }
 
-
-const renderElement = (data) => {
-  const card = new Card(data.name, data.link, cardTemplate, handleImagePopupClick);
+// Создание и возврат карточки
+function createCard(item) {
+  const card = new Card(item.name, item.link, cardTemplate, handleImagePopupClick);
   const cardElement = card.createCard();
+  return cardElement;
+}
+
+// Добавление карточки на страницу
+const renderElement = (data) => {
+  const cardElement = createCard(data)
   container.prepend(cardElement);
 };
 
-
 // Перебор и добавление карточек на страницу
-initialCards.forEach((item) => {
-  renderElement(item);
-});
+initialCards.forEach(renderElement);
+
+
 
 // Создание формы добавления карточки
 const formValidatorCard = new FormValidator(options, addForm);
@@ -151,7 +149,7 @@ closeButton.addEventListener('click', () => {
   closePopup(profilePopup);
 });
 
-editForm.addEventListener('submit', handleFormSubmit);
+editForm.addEventListener('submit', handleProfileFormSubmit);
 
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
@@ -164,7 +162,7 @@ closeAddButton.addEventListener('click', () => {
 
 
 // Редактирование информации в профиле
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
   nameProfile.textContent = nameInput.value.trim();
@@ -182,12 +180,15 @@ addForm.addEventListener('submit', (evt) => {
   closePopup(popupAdd);
   evt.target.reset();
 
-  const createButton = evt.submitter;
-  createButton.classList.add('popup__save_inactive');
-  createButton.disabled = (true);
+  formValidatorCard.disableButton();
 });
 
 
 closeImagePopup.addEventListener('click', () => {
   closePopup(imagePopup);
 });
+
+
+  // const createButton = evt.submitter;
+  // createButton.classList.add('popup__save_inactive');
+  // createButton.disabled = (true);
