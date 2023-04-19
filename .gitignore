@@ -1,0 +1,3 @@
+node_modules
+ npm i babel-loader --save-dev
+ 
