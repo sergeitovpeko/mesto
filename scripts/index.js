@@ -100,21 +100,50 @@ const image = document.querySelector('#link');
 // initialCards.forEach(renderElement);
 
 
+
+
+
+
+
+
+
+
+
+
+
+// Создание карточек
 const cardsList = new Section({
   data: initialCards,
   renderer: (item) => {
     const card = new Card(item.name, item.link, cardTemplate, handleImagePopupClick);
-    return card.createCard();
+    card.createCard();
+    cardList.addItem(card);
   }
-});
+}, container);
+
+
+// Отрисовка карточек
+// const renderCards = (item) => {
+//   renderItems.addItem(item);
+// }
+
+cardsList.renderItems();
+
+
+
+
+
+
 
 // Открытие и закрытие попапа с картинкой
-handleCardClick = (data) => {
+const handleCardClick = (data) => {
   open(imagePopup);
   bigImage.src = data.src;
   bigImage.alt = data.alt;
   nameImage.textContent = data.alt;
 }
+
+image.addEventListener('click', handleCardClick);
 
 
 // Создание формы добавления карточки
