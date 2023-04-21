@@ -75,13 +75,54 @@ const nameImage = document.querySelector('.popup__image-name');
 const name = document.querySelector('#name');
 const image = document.querySelector('#link');
 
-// // Открытие и закрытие попапа с картинкой
-// const handleImagePopupClick = (data) => {
-//   openPopup(imagePopup);
+
+const popupOpenImage = new PopupWithImage(imagePopup);
+popupOpenImage.setEventListeners();
+
+const handleCardClick = (name, link) => {
+  popupOpenImage.open(name, link);
+}
+
+// Создание карточек и добавление карточек на страницу
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item.name, item.link, cardTemplate, handleCardClick);
+    cardList.addItem(card.createCard());
+  }
+}, container);
+
+cardList.renderItems();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Открытие и закрытие попапа с картинкой
+// const handleCardClick = (data) => {
+//   const popupOpenImage = new PopupWithImage(imagePopup);
+
 //   bigImage.src = data.src;
 //   bigImage.alt = data.alt;
 //   nameImage.textContent = data.alt;
+
+//   popupOpenImage.open(name, link);
+
+//   open(handleImagePopupClick);
 // }
+
+// image.addEventListener('click', handleCardClick);
+
 
 // // Создание и возврат карточки
 // function createCard(item) {
@@ -102,48 +143,6 @@ const image = document.querySelector('#link');
 
 
 
-
-
-
-
-
-
-
-
-
-// Создание карточек
-const cardsList = new Section({
-  data: initialCards,
-  renderer: (item) => {
-    const card = new Card(item.name, item.link, cardTemplate, handleImagePopupClick);
-    card.createCard();
-    cardList.addItem(card);
-  }
-}, container);
-
-
-// Отрисовка карточек
-// const renderCards = (item) => {
-//   renderItems.addItem(item);
-// }
-
-cardsList.renderItems();
-
-
-
-
-
-
-
-// Открытие и закрытие попапа с картинкой
-const handleCardClick = (data) => {
-  open(imagePopup);
-  bigImage.src = data.src;
-  bigImage.alt = data.alt;
-  nameImage.textContent = data.alt;
-}
-
-image.addEventListener('click', handleCardClick);
 
 
 // Создание формы добавления карточки
@@ -236,3 +235,18 @@ addForm.addEventListener('submit', (evt) => {
 closeImagePopup.addEventListener('click', () => {
   closePopup(imagePopup);
 });
+
+
+
+
+
+
+
+
+// Открытие и закрытие попапа с картинкой
+// const handleImagePopupClick = (data) => {
+//   openPopup(imagePopup);
+//   bigImage.src = data.src;
+//   bigImage.alt = data.alt;
+//   nameImage.textContent = data.alt;
+// }

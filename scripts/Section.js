@@ -8,9 +8,9 @@ export default class Section {
 
 
 // Перебор массива и добавление карточек
-  renderItems() {
+  renderItems(items) {
     this._initialCards.forEach((item) => {
-      this.renderer(item);
+      this._renderer(item);
     });
   }
   
