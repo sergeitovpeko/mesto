@@ -1,5 +1,4 @@
 export default class Section {
-// Создание сущности карточки
   constructor({ items, renderer }, container) {
     this._initialCards = items;
     this._renderer = renderer;

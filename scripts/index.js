@@ -76,6 +76,8 @@ const name = document.querySelector('#name');
 const image = document.querySelector('#link');
 
 
+
+// Создание экземпляра попапа с картинкой
 const popupOpenImage = new PopupWithImage(imagePopup);
 popupOpenImage.setEventListeners();
 
@@ -94,8 +96,17 @@ const cardList = new Section({
 
 cardList.renderItems();
 
+const userInfo = new UserInfo(nameInput, jobInput);
 
+const popupEditProfile = new PopupWithForm({
+  popupSelector: profilePopup,
+  submitForm: (nameProfile, jobProfile) => {
+    userInfo.setUserInfo(nameProfile, jobProfile);
+    popupEditProfile.close();
+  }
+});
 
+popupEditProfile.setEventListeners();
 
 
 
@@ -167,12 +178,27 @@ formValidatorProfile.enableValidation();
 //   document.removeEventListener('keydown', closePopupsEscape);
 // };
 
+
+
+
+
+
+
 // Открытие и закрытие формы на изменение данных
-const handleEditButtonClick = () => {
-  openPopup(profilePopup)
-  nameInput.value = nameProfile.textContent.trim();
-  jobInput.value = jobProfile.textContent.trim();
-}
+// const handleEditButtonClick = () => {
+//   openPopup(profilePopup)
+//   nameInput.value = nameProfile.textContent.trim();
+//   jobInput.value = jobProfile.textContent.trim();
+// }
+
+// editButton.addEventListener('click', handleEditButtonClick);
+
+
+
+
+
+
+
 
 // // Закрытие по нажатию на оверлей
 // document.querySelectorAll('.popup').forEach(popup => {
@@ -191,13 +217,11 @@ const handleEditButtonClick = () => {
 //   }
 // };
 
-editButton.addEventListener('click', handleEditButtonClick);
 
 // closeButton.addEventListener('click', () => {
 //   closePopup(profilePopup);
 // });
 
-editForm.addEventListener('submit', handleProfileFormSubmit);
 
 // addButton.addEventListener('click', () => {
 //   openPopup(popupAdd);
@@ -210,14 +234,16 @@ editForm.addEventListener('submit', handleProfileFormSubmit);
 
 
 // Редактирование информации в профиле
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
+// function handleProfileFormSubmit(evt) {
+//   evt.preventDefault();
 
-  nameProfile.textContent = nameInput.value.trim();
-  jobProfile.textContent = jobInput.value.trim();
+//   nameProfile.textContent = nameInput.value.trim();
+//   jobProfile.textContent = jobInput.value.trim();
 
-  closePopup(profilePopup);
-}
+//   closePopup(profilePopup);
+// }
+
+// editForm.addEventListener('submit', handleProfileFormSubmit);
 
 
 // Слушатель формы добавления новой карточки
@@ -232,9 +258,9 @@ addForm.addEventListener('submit', (evt) => {
 });
 
 
-closeImagePopup.addEventListener('click', () => {
-  closePopup(imagePopup);
-});
+// closeImagePopup.addEventListener('click', () => {
+//   closePopup(imagePopup);
+// });
 
 
 
