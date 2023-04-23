@@ -60,8 +60,9 @@ const closeButton = document.querySelector('.popup__close');
 const closeAddButton = popupAdd.querySelector('.popup__close');
 const closeImagePopup = imagePopup.querySelector('.popup__close');
 
-const nameProfile = document.querySelector('.profile__name');
-const jobProfile = document.querySelector('.profile__job');
+// const nameProfile = document.querySelector('.profile__name');
+// const jobProfile = document.querySelector('.profile__job');
+
 
 const nameInput = document.querySelector('.popup__form-item_input_name');
 const jobInput = document.querySelector('.popup__form-item_input_job');
@@ -96,20 +97,30 @@ const cardList = new Section({
 
 cardList.renderItems();
 
-const userInfo = new UserInfo(nameInput, jobInput);
+const userInfo = new UserInfo({
+  nameSelector: '.profile__name',
+  infoSelector: '.profile__job',
+});
 
 const popupEditProfile = new PopupWithForm({
   popupSelector: profilePopup,
-  submitForm: (nameProfile, jobProfile) => {
-    userInfo.setUserInfo(nameProfile, jobProfile);
+  submitForm: ({nameInput, jobInput}) => {
+    userInfo.setUserInfo({
+      name: nameInput.value,
+      info: jobInput.value,
+    });
     popupEditProfile.close();
   }
 });
 
 popupEditProfile.setEventListeners();
 
-
-
+editButton.addEventListener('click', () => {
+  const { name, info} = userInfo.getUserInfo();
+  nameInput.value = name;
+  jobInput.value = info;
+  popupEditProfile.open()
+});
 
 
 
@@ -179,6 +190,13 @@ formValidatorProfile.enableValidation();
 // };
 
 
+// addButton.addEventListener('click', () => {
+//   openPopup(popupAdd);
+// });
+
+
+
+
 
 
 
@@ -191,7 +209,6 @@ formValidatorProfile.enableValidation();
 //   jobInput.value = jobProfile.textContent.trim();
 // }
 
-// editButton.addEventListener('click', handleEditButtonClick);
 
 
 
@@ -222,10 +239,6 @@ formValidatorProfile.enableValidation();
 //   closePopup(profilePopup);
 // });
 
-
-// addButton.addEventListener('click', () => {
-//   openPopup(popupAdd);
-// });
 
 // closeAddButton.addEventListener('click', () => {
 //   closePopup(popupAdd);

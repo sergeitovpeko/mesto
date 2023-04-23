@@ -7,13 +7,13 @@ export default class Popup {
   // Открытие попапа
   open() {
     this._popup.classList.add('popup_opened');
-    // document.addEventListener('click', this._handleEscapeClose);
+    document.addEventListener('click', this._handleEscapeClose);
   }
 
   // Закрытие попапа
   close() {
     this._popup.classList.remove('popup_opened');
-    // document.removeEventListener('click', this._handleEscapeClose);
+    document.removeEventListener('click', this._handleEscapeClose);
   }
 
 
