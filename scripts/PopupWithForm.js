@@ -10,10 +10,10 @@ export default class PopupWithForm extends Popup {
 
 // Берем значения полей инпутов
   _getInputValues() {
-    this._inputsValues();
+    this._inputsValues = {};
 // Перебираем массив значений полей инпутов
-    this._inputsList.forEach((item) => {
-      this._inputsValues[item.name] = [item.value];
+    this._inputsList.forEach((input) => {
+      this._inputsValues[input.getAttribute('#name')] = [input.value];
     });
 // Возвращаем значения инпутов
     return this._inputsValues;
@@ -23,8 +23,8 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener('submit', (evt) => {
-      this._submitForm(this._getInputValues());
       evt.preventDefault();
+      this._submitForm(this._getInputValues());
       this.close();
     });    
   }
