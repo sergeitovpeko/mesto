@@ -104,7 +104,7 @@ const userInfo = new UserInfo({
 
 const popupEditProfile = new PopupWithForm({
   popupSelector: profilePopup,
-  submitForm: ({nameInput, jobInput}) => {
+  submitForm: ({name, info}) => {
     userInfo.setUserInfo({
       name: nameInput.value,
       info: jobInput.value,
@@ -116,11 +116,29 @@ const popupEditProfile = new PopupWithForm({
 popupEditProfile.setEventListeners();
 
 editButton.addEventListener('click', () => {
-  const { name, info} = userInfo.getUserInfo();
+  const { name, info } = userInfo.getUserInfo();
   nameInput.value = name;
   jobInput.value = info;
   popupEditProfile.open()
 });
+
+
+const popupAddCard = new PopupWithForm({
+  popupSelector: popupAdd,
+  submitForm: (item) => {
+    createCard(item);
+    popupAddCard.close();
+  }
+});
+
+popupAddCard.setEventListeners();
+
+addButton.addEventListener('click', () => {
+  popupAddCard.open();
+});
+
+
+
 
 
 
@@ -259,16 +277,16 @@ formValidatorProfile.enableValidation();
 // editForm.addEventListener('submit', handleProfileFormSubmit);
 
 
-// Слушатель формы добавления новой карточки
-addForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  const item = { name: name.value, link: image.value };
-  renderElement(item);
-  closePopup(popupAdd);
-  evt.target.reset();
+// // Слушатель формы добавления новой карточки
+// addForm.addEventListener('submit', (evt) => {
+//   evt.preventDefault();
+//   const item = { name: name.value, link: image.value };
+//   renderElement(item);
+//   closePopup(popupAdd);
+//   evt.target.reset();
 
-  formValidatorCard.disableButton();
-});
+//   formValidatorCard.disableButton();
+// });
 
 
 // closeImagePopup.addEventListener('click', () => {
