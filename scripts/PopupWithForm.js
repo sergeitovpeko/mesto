@@ -13,13 +13,14 @@ export default class PopupWithForm extends Popup {
     this._inputsValues = {};
 // Перебираем массив значений полей инпутов
     this._inputsList.forEach((input) => {
-      this._inputsValues[input.getAttribute('#name')] = [input.value];
+      this._inputsValues[input.getAttribute('#name', '#link')] = [input.value];
     });
 // Возвращаем значения инпутов
     return this._inputsValues;
   }
 
-// Перезаписанный метод закрытия попапов форм
+
+  // Перезаписанный метод закрытия попапов форм
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener('submit', (evt) => {

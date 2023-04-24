@@ -60,10 +60,6 @@ const closeButton = document.querySelector('.popup__close');
 const closeAddButton = popupAdd.querySelector('.popup__close');
 const closeImagePopup = imagePopup.querySelector('.popup__close');
 
-// const nameProfile = document.querySelector('.profile__name');
-// const jobProfile = document.querySelector('.profile__job');
-
-
 const nameInput = document.querySelector('.popup__form-item_input_name');
 const jobInput = document.querySelector('.popup__form-item_input_job');
 
@@ -88,14 +84,13 @@ const handleCardClick = (name, link) => {
 
 // Создание карточек и добавление карточек на страницу
 const cardList = new Section({
-  items: initialCards,
   renderer: (item) => {
     const card = new Card(item.name, item.link, cardTemplate, handleCardClick);
     cardList.addItem(card.createCard());
   }
 }, container);
 
-cardList.renderItems();
+  cardList.renderItems(initialCards);
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
@@ -126,10 +121,11 @@ editButton.addEventListener('click', () => {
 const popupAddCard = new PopupWithForm({
   popupSelector: popupAdd,
   submitForm: (item) => {
-    createCard(item);
+    cardList.renderItems(item);
     popupAddCard.close();
   }
 });
+
 
 popupAddCard.setEventListeners();
 
