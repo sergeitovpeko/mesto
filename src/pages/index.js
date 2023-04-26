@@ -1,9 +1,10 @@
-import Card from './Сard.js';
-import Section from './Section.js';
-import FormValidator from './FormValidator.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
+import './index.css';
+import Card from '../scripts/Сard.js';
+import Section from '../scripts/Section.js';
+import FormValidator from '../scripts/FormValidator.js';
+import PopupWithImage from '../scripts/PopupWithImage.js';
+import PopupWithForm from '../scripts/PopupWithForm.js';
+import UserInfo from '../scripts/UserInfo.js';
 
 // Массив карточек
 const initialCards = [

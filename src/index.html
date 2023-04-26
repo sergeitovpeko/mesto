@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
   <title>Mesto</title>
 </head>
 <body class="body">
@@ -13,7 +13,7 @@
     
     <!-- Шапка -->
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Логотип">
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип">
     </header>
 
     
@@ -23,7 +23,7 @@
       <!-- Профиль -->
       <section class="profile">
         <div class="profile__avatar">
-          <img class="profile__image" src="./images/avatar.jpg" alt="Фотография Жак-Ив Кусто">
+          <img class="profile__image" src="<%=require('./images/avatar.jpg')%>" alt="Фотография Жак-Ив Кусто">
         </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -117,14 +117,14 @@
   </section>
 
   <!-- Подключение скриптов -->
-  <script src="./scripts/Сard.js" type="module"></script>
+  <!-- <script src="./scripts/Сard.js" type="module"></script>
   <script src="./scripts/Section.js" type="module"></script>
   <script src="./scripts/Popup.js" type="module"></script>
   <script src="./scripts/PopupWithImage.js" type="module"></script>
   <script src="./scripts/PopupWithForm.js" type="module"></script>
   <script src="./scripts/FormValidator.js" type="module"></script>
   <script src="./scripts/UserInfo.js" type="module"></script>
-  <script src="./scripts/index.js" type="module"></script>
+  <script src="./scripts/index.js" type="module"></script> -->
 
 </body>
 </html>
