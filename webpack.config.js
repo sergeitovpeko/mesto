@@ -8,13 +8,13 @@ module.exports = {
     main: './src/pages/index.js'
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'main.[contenthash].js',
     publicPath: '',
   },
   mode: 'development',
   devServer: {
-    static: path.join(__dirname, './dist'),
+    static: path.resolve(__dirname, './dist'),
     open: true,
     compress: true,
     port: 9000,
@@ -59,8 +59,6 @@ module.exports = {
       template: './src/index.html'
     }),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: './src/index.[contenthash].css'
-    }),
+    new MiniCssExtractPlugin(),
   ]
 }
