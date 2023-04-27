@@ -45,6 +45,7 @@ module.exports = {
       use: [MiniCssExtractPlugin.loader, {
         loader: 'css-loader',
         options: {
+          url: true,
           importLoaders: 1
         }
       },
@@ -59,7 +60,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: './src/index.css'
+      filename: './src/index.[contenthash].css'
     }),
   ]
 }
