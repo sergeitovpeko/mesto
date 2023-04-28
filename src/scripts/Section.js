@@ -5,14 +5,12 @@ export default class Section {
     this._container = container;
   }
 
-
   // Перебор массива карточек
   renderItems() {
     this._initialCards.forEach(item => {
       this._renderer(item);
     });
   }
-
 
   // Добавление карточек на страницу
   addItem(element) {

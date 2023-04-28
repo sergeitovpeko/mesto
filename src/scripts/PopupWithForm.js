@@ -1,8 +1,8 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
-  constructor({popupSelector, submitForm}) {
-    super(popupSelector);
+  constructor({popupElement, submitForm}) {
+    super(popupElement);
     this._submitForm = submitForm;
     this._form = this._popup.querySelector('.popup__form');
     this._inputsList = this._form.querySelectorAll('.popup__form-item');
@@ -18,7 +18,6 @@ export default class PopupWithForm extends Popup {
 // Возвращаем значения инпутов
     return this._inputsValues;
   }
-
 
   // Перезаписанный метод закрытия попапов форм
   setEventListeners() {

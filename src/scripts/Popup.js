@@ -1,13 +1,13 @@
 export default class Popup {
-  constructor(popupSelector) {
-    this._popup = popupSelector;
+  constructor(popupElement) {
+    this._popup = popupElement;
     this._closeButton = this._popup.querySelector('.popup__close');
   }
 
   // Открытие попапа
   open() {
     this._popup.classList.add('popup_opened');
-    document.addEventListener('click', this._handleEscapeClose);
+    // document.addEventListener('click', this._handleEscapeClose);
   }
 
   // Закрытие попапа

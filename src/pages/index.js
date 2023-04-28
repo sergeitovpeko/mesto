@@ -62,8 +62,13 @@ const jobInput = document.querySelector('.popup__form-item_input_job');
 const container = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('#card-template');
 
+// Создание формы добавления карточки
+const formValidatorCard = new FormValidator(options, addForm);
+formValidatorCard.enableValidation();
 
-
+// Создание формы редактирования профиля
+const formValidatorProfile = new FormValidator(options, editForm);
+formValidatorProfile.enableValidation();
 
 // Создание экземпляра попапа с картинкой
 const popupOpenImage = new PopupWithImage(imagePopup);
@@ -87,9 +92,6 @@ const cardList = new Section({
 
 cardList.renderItems();
 
-
-
-
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
   infoSelector: '.profile__job',
@@ -97,7 +99,7 @@ const userInfo = new UserInfo({
 
 // Создание попапа профиля
 const popupEditProfile = new PopupWithForm({
-  popupSelector: profilePopup,
+  popupElement: profilePopup,
   submitForm: ({ name, info }) => {
     userInfo.setUserInfo({
       name: nameInput.value,
@@ -117,15 +119,13 @@ editButton.addEventListener('click', () => {
   popupEditProfile.open()
 });
 
-
-
-
 // Создание попапа добавления карточки
 const popupAddCard = new PopupWithForm({
-  popupSelector: popupAdd,
+  popupElement: popupAdd,
   submitForm: (item) => {
     renderCard(item);
     popupAddCard.close();
+    formValidatorCard.disableButton();
   }
 });
 
@@ -135,14 +135,3 @@ popupAddCard.setEventListeners();
 addButton.addEventListener('click', () => {
   popupAddCard.open();
 });
-
-
-
-
-// Создание формы добавления карточки
-const formValidatorCard = new FormValidator(options, addForm);
-formValidatorCard.enableValidation();
-
-// Создание формы редактирования профиля
-const formValidatorProfile = new FormValidator(options, editForm);
-formValidatorProfile.enableValidation();
