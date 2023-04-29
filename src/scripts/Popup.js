@@ -2,13 +2,13 @@ export default class Popup {
   constructor(popupElement) {
     this._popup = popupElement;
     this._closeButton = this._popup.querySelector('.popup__close');
-    this._handleEscClose = this._handleEscapeClose;
+    this._handleEscapeClose = this._handleEscapeClose.bind(this);
   }
 
   // Открытие попапа
   open() {
     this._popup.classList.add('popup_opened');
-    document.addEventListener('keydown', this._handleEscapeClose.bind(this));
+    document.addEventListener('keydown', this._handleEscapeClose);
   }
 
   // Закрытие попапа
