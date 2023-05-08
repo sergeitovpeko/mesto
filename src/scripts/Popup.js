@@ -42,9 +42,5 @@ export default class Popup {
     this._popup.addEventListener('click', (evt) => {
       this._handleOverlayClose(evt);
     });
-
-    // document.addEventListener('keydown', (evt) => {
-    //   this._handleEscapeClose(evt);
-    // });
   }
 }

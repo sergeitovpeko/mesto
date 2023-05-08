@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
   <title>Mesto</title>
 </head>
 <body class="body">
@@ -23,7 +22,9 @@
       <!-- Профиль -->
       <section class="profile">
         <div class="profile__avatar">
-          <img class="profile__image" src="<%=require('./images/avatar.jpg')%>" alt="Фотография Жак-Ив Кусто">
+          <button class="profile__avatar-button" type="button">
+            <img class="profile__image" src="<%=require('./images/avatar.jpg')%>" alt="Фотография Жак-Ив Кусто">
+          </button>
         </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -116,15 +117,32 @@
     </div>
   </section>
 
-  <!-- Подключение скриптов -->
-  <!-- <script src="./scripts/Сard.js" type="module"></script>
-  <script src="./scripts/Section.js" type="module"></script>
-  <script src="./scripts/Popup.js" type="module"></script>
-  <script src="./scripts/PopupWithImage.js" type="module"></script>
-  <script src="./scripts/PopupWithForm.js" type="module"></script>
-  <script src="./scripts/FormValidator.js" type="module"></script>
-  <script src="./scripts/UserInfo.js" type="module"></script>
-  <script src="./scripts/index.js" type="module"></script> -->
+
+  <!-- Форма обновления фото профиля -->
+  <section class="popup" id="edit">
+    <div class="popup__container">
+      <button class="popup__close" name="close-edit" type="button"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form" id="edit-form" name="signIn" action="#" novalidate>
+        <div class="popup__form-input">
+          <input class="popup__form-item popup__form-item_input_job" type="url" id="link" placeholder="Ссылка на картинку"
+            required>
+          <span class="popup__form-error popup__form-error_active"></span>
+        </div>
+        <button class="popup__save" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- Подтверждение удаления карточки -->
+  <section class="popup" id="edit">
+    <div class="popup__container">
+      <button class="popup__close" name="close-edit" type="button"></button>
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button class="popup__save" type="submit">Да</button>
+    </div>
+  </section>
 
 </body>
 </html>

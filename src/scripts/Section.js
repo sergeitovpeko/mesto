@@ -1,13 +1,12 @@
 export default class Section {
-  constructor({ items, renderer }, container) {
-    this._initialCards = items;
+  constructor({renderer}, container) {
     this._renderer = renderer;
     this._container = container;
   }
 
   // Перебор массива карточек
-  renderItems() {
-    this._initialCards.forEach(item => {
+  renderItems(items) {
+    items.forEach(item => {
       this._renderer(item);
     });
   }

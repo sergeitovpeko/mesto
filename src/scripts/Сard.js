@@ -58,4 +58,4 @@ export default class Card {
   _handleLike() {
     this._buttonLike.classList.toggle('elements__button_like_active');
   }
-};
+}
