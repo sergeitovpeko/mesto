@@ -13,7 +13,7 @@ export default class PopupWithForm extends Popup {
     this._inputsValues = {};
 // Перебираем массив значений полей инпутов
     this._inputsList.forEach((input) => {
-      this._inputsValues[input.id] = input.value;
+      this._inputsValues[input.name] = input.value;
     });
 // Возвращаем значения инпутов
     return this._inputsValues;

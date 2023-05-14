@@ -1,6 +1,6 @@
 .profile__avatar {
   box-sizing: content-box;
-  width: 169px;
+  width: 120px;
   height: 128px;
   grid-area: photo;
   position: relative;
@@ -12,15 +12,15 @@
 
 @media (max-width: 1023px) {
   .profile__avatar {
-    width: 132px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
   }
 }
 
 @media (max-width: 767px) {
   .profile__avatar {
     margin: -4px 54px 22px 59px;
-    width: 169px;
-    height: 128px;
+    width: 120px;
+    height: 120px;
   }
 }

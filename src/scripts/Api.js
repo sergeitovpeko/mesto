@@ -35,7 +35,7 @@ export default class Api {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
-        avatar: item.link
+        avatar: item.avatar,
       })
     }).then(this.getResponse);
   }
@@ -48,7 +48,7 @@ export default class Api {
   }
 
   addNewCard(item) {
-    return fetch(`${this.url}/users/cards`, {
+    return fetch(`${this.url}/cards`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify({
@@ -58,21 +58,21 @@ export default class Api {
     }).then(this.getResponse);
   }
 
-  deleteCard() {
+  deleteCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this.headers,
     }).then(this.getResponse);
   }
 
-  likeCard() {
+  likeCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: this.headers,
     }).then(this.getResponse);
   }
 
-  dislikeCard() {
+  dislikeCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: this.headers,

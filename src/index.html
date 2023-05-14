@@ -47,8 +47,11 @@
           <img class="elements__image" src="#" alt="">
           <div class="elements__info">
             <h2 class="elements__title"></h2>
+              <button class="elements__button elements__button_delete" type="button"></button>
+            <div class="elements__like">
             <button class="elements__button elements__button_like" type="button"></button>
-            <button class="elements__button elements__button_delete" type="button"></button>
+              <p class="elements__likes-quantity">0</p>
+            </div>
           </div>
         </li>
       </template>
@@ -69,14 +72,14 @@
     <div class="popup__container">
       <button class="popup__close" name="close-edit" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" id="edit-form" name="signIn" action="#" novalidate>
+      <form class="popup__form" id="edit-form" name="signIn" novalidate>
         <div class="popup__form-input">
           <input class="popup__form-item popup__form-item_input_name" type="text" name="name" placeholder="Имя"
             minlength="2" maxlength="40" required>
           <span class="popup__form-error popup__form-error_active" id="error-profile"></span>
         </div>
         <div class="popup__form-input">
-          <input class="popup__form-item popup__form-item_input_job" type="text" name="info" placeholder="Профессия"
+          <input class="popup__form-item popup__form-item_input_job" type="text" name="about" placeholder="Профессия"
             minlength="2" maxlength="200" required>
           <span class="popup__form-error popup__form-error_active"></span>
         </div>
@@ -91,14 +94,14 @@
     <div class="popup__container">
       <button class="popup__close" name="close-add" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" id="add-form" action="#" novalidate>
+      <form class="popup__form" id="add-form" novalidate>
         <div class="popup__form-input">
-          <input class="popup__form-item popup__form-item_input_name" type="text" id="name" placeholder="Название"
+          <input class="popup__form-item popup__form-item_input_name" type="text" name="name" placeholder="Название"
             minlength="2" maxlength="30" required>
           <span class="popup__form-error popup__form-error_active" id="error-place"></span>
         </div>
         <div class="popup__form-input">
-          <input class="popup__form-item popup__form-item_input_job" type="url" id="link" placeholder="Ссылка на картинку"
+          <input class="popup__form-item popup__form-item_input_job" type="url" name="link" placeholder="Ссылка на картинку"
             required>
           <span class="popup__form-error popup__form-error_active"></span>
         </div>
@@ -119,13 +122,13 @@
 
 
   <!-- Форма обновления фото профиля -->
-  <section class="popup" id="edit">
+  <section class="popup" id="avatar">
     <div class="popup__container">
       <button class="popup__close" name="close-edit" type="button"></button>
       <h2 class="popup__title">Обновить аватар</h2>
-      <form class="popup__form" id="edit-form" name="signIn" action="#" novalidate>
+      <form class="popup__form" id="avatar-form" name="signIn" novalidate>
         <div class="popup__form-input">
-          <input class="popup__form-item popup__form-item_input_job" type="url" id="link" placeholder="Ссылка на картинку"
+          <input class="popup__form-item popup__form-item_input_avatar" type="url" name="avatar" placeholder="Ссылка на картинку"
             required>
           <span class="popup__form-error popup__form-error_active"></span>
         </div>
@@ -136,11 +139,13 @@
 
 
   <!-- Подтверждение удаления карточки -->
-  <section class="popup" id="edit">
+  <section class="popup" id="delete">
     <div class="popup__container">
       <button class="popup__close" name="close-edit" type="button"></button>
       <h2 class="popup__title">Вы уверены?</h2>
-      <button class="popup__save" type="submit">Да</button>
+      <form class="popup__form" id="confirm-form" name="confirm" novalidate>
+        <button class="popup__save popup__save_confirm-button" type="submit">Да</button>
+      </form>
     </div>
   </section>
 

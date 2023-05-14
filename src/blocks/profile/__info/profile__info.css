@@ -4,12 +4,12 @@
   grid-area: name-edit;
   box-sizing: border-box;
   margin: 0;
-  padding-top: 22px;
+  padding: 22px 0 0 49px;
 }
 
 @media (max-width: 1023px) {
   .profile__info {
-    padding-top: 15px;
+    padding: 15px 0 0 32px;
     max-width: 298px;
   }
 }
