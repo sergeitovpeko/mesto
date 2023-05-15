@@ -1,21 +1,21 @@
-// Cоздаём класс карточки
 export default class Card {
-  constructor(name, link, likes, _id, owner, cardTemplate, handleCardClick,
-    handleDeleteClick, handleLikeCard, handleDislikeCard) {
-    this._name = name;
-    this._link = link;
-    this._likes = likes;
-    this._cardId = _id;
-    this._ownerId = owner._id;
+  constructor(config, data, cardTemplate, userId,
+      handleCardClick, handleDeleteClick, handleLikeCard) {
+    this.config = config;
+    this._name = data.name;
+    this._link = data.link;
+    this._likes = data.likes;
+    this._cardId = data._id;
+    this._userId = userId;
+    this._ownerId = data.owner._id;
     this._cardTemplate = cardTemplate;
-    this._handleCardClick = handleCardClick;
-    // this._handleDeleteClick = handleDeleteClick;
     this._handleLikeCard = handleLikeCard;
-    this._handleDislikeCard = handleDislikeCard;
+    this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _getTemplate() {
-// Возвращаем разметку из HTML и клонируем элемент списка
+    // Возвращаем разметку из HTML и клонируем элемент списка
     return this._cardTemplate.content
       .querySelector('.elements__list-item').cloneNode(true);
   }
@@ -24,35 +24,39 @@ export default class Card {
     return this._cardId;
   }
 
-// Готовим карточки к публикации
+  // Готовим карточки к публикации
   createCard = () => {
-// Переносим разметку в приватное поле
+    // Переносим разметку в приватное поле
     this._element = this._getTemplate();
-    this._elementImage = this._element.querySelector('.elements__image');
-    this._elementTitle = this._element.querySelector('.elements__title');
-    this._buttonDelete = this._element.querySelector('.elements__button_delete');
-    this._buttonLike = this._element.querySelector('.elements__button_like');
-    this._quantityLikes = this._element.querySelector('.elements__likes-quantity');
+    this._elementImage = this._element.querySelector(this.config.cardImage);
+    this._elementTitle = this._element.querySelector(this.config.cardTitle);
+    this._buttonDelete = this._element.querySelector(this.config.cardDelete);
+    this._buttonLike = this._element.querySelector(this.config.cardLike);
+    this._quantityLikes = this._element.querySelector(this.config.cardCount);
     this._setEventListeners();
 
-// Передаем данные элемента списка
+    if (this._ownerId !== this._userId) {
+      this._buttonDelete.remove();
+    }
+
+    // Передаем данные элемента списка
+    this.handleLike(this._likes);
     this._elementImage.src = this._link;
     this._elementImage.alt = this._name;
     this._elementTitle.textContent = this._name;
-    // this._quantityLikes.textContent = this._likes.length;
 
-// Возвращаем элемент обратно на страницу
+    // Возвращаем элемент обратно на страницу
     return this._element;
   }
 
-// Обработчкики событий кликов по карточкам
+  // Обработчики событий кликов по карточкам
   _setEventListeners() {
     this._buttonDelete.addEventListener('click', () => {
-      this._handleDelete();
+      this._handleDeleteClick(this, this._cardId);
     });
 
     this._buttonLike.addEventListener('click', () => {
-      this._handleLike();
+      this._handleLikeCard(this._cardId, this._isLiked, this);
     });
 
     this._elementImage.addEventListener('click', () => {
@@ -60,18 +64,28 @@ export default class Card {
     });
   }
 
-// Метод удаления карточки
-  _handleDelete() {
+  handleDelete() {
     this._element.remove();
+    this._element = null;
   }
 
-// Метод лайка карточки
-  _handleLike() {
-    this._buttonLike.classList.toggle('elements__button_like_active');
+  // Методы лайка карточки
+  _checkUserLike() {
+    return this._likes.some(owner => owner._id === this._userId);
   }
 
-  _counterLikes() {
-    this._quantityLikes.textContent = this._likes.length;
+  _handleLikeButton(isLiked) {
+    if (isLiked) {
+      this._buttonLike.classList.add('elements__button_like_active');
+    } else {
+      this._buttonLike.classList.remove('elements__button_like_active');
+    }
+  }  
+
+  handleLike(likes) {
+    this._likes = likes;
+    this._isLiked = this._checkUserLike();
+    this._quantityLikes.textContent = likes.length;
+    this._handleLikeButton(this._isLiked);
   }
 }
-

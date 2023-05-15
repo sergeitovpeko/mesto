@@ -1,81 +1,82 @@
 export default class Api {
   constructor(params) {
-    this.url = params.url;
-    this.headers = params.headers;
+    this.url = params.url
+    this.headers = params.headers
   }
 
   getResponse(res) {
     if (res.ok) {
-      return res.json();
+      return res.json()
     } else {
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return Promise.reject(`Ошибка: ${res.status}`)
     }
   }
 
   getUserInfo() {
     return fetch(`${this.url}/users/me`, {
-      method: 'GET',
+      method: "GET",
       headers: this.headers,
-    }).then(this.getResponse);
+    }).then(this.getResponse)
   }
 
   editUserInfo(item) {
     return fetch(`${this.url}/users/me`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
         name: item.name,
         about: item.about,
-      })
-    }).then(this.getResponse);
+      }),
+    }).then(this.getResponse)
   }
 
   editUserPhoto(item) {
+    console.log(item)
     return fetch(`${this.url}/users/me/avatar`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
         avatar: item.avatar,
-      })
-    }).then(this.getResponse);
+      }),
+    }).then(this.getResponse)
   }
 
   getInitialCards() {
     return fetch(`${this.url}/cards`, {
-      method: 'GET',
+      method: "GET",
       headers: this.headers,
-    }).then(this.getResponse);
+    }).then(this.getResponse)
   }
 
   addNewCard(item) {
     return fetch(`${this.url}/cards`, {
-      method: 'POST',
+      method: "POST",
       headers: this.headers,
       body: JSON.stringify({
         name: item.name,
         link: item.link,
-      })
-    }).then(this.getResponse);
+      }),
+    }).then(this.getResponse)
   }
 
   deleteCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: this.headers,
-    }).then(this.getResponse);
+    }).then(this.getResponse)
   }
 
   likeCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
-      method: 'PUT',
+      method: "PUT",
       headers: this.headers,
-    }).then(this.getResponse);
+    }).then(this.getResponse)
   }
 
   dislikeCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: this.headers,
-    }).then(this.getResponse);
+    }).then(this.getResponse)
   }
 }

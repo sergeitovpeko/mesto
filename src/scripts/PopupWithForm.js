@@ -1,22 +1,36 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
-  constructor({popupElement, submitForm}) {
+  constructor(popupElement, submitForm) {
     super(popupElement);
     this._submitForm = submitForm;
     this._form = this._popup.querySelector('.popup__form');
     this._inputsList = this._form.querySelectorAll('.popup__form-item');
+    this._button = this._popup.querySelector('.popup__save')
+    this._buttonTitle = this._button.textContent
   }
+
+open(init) {
+  this._inputsList.forEach((input) => {
+    input.value = init[input.name]
+  })
+  this._button.textContent = this._buttonTitle;
+  super.open()
+}
+
+updateText(text = 'Сохранение. . .') {
+  this._button.textContent = text;
+}
 
 // Берем значения полей инпутов
   _getInputValues() {
-    this._inputsValues = {};
+    const output = {};
 // Перебираем массив значений полей инпутов
     this._inputsList.forEach((input) => {
-      this._inputsValues[input.name] = input.value;
+      output[input.name] = input.value;
     });
 // Возвращаем значения инпутов
-    return this._inputsValues;
+    return output;
   }
 
   // Перезаписанный метод закрытия попапов форм
@@ -25,7 +39,6 @@ export default class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._submitForm(this._getInputValues());
-      this.close();
     });    
   }
 
