@@ -111,6 +111,7 @@ popupAddCard.setEventListeners()
 // Слушатель добавления карточки
 addButton.addEventListener("click", () => {
   popupAddCard.open(emptyCard)
+  formValidatorCard.disableButton()
 })
 
 const api = new Api({
@@ -148,6 +149,9 @@ function editProfileInfo(item) {
     .catch((error) => {
       console.log(error)
     })
+    .finally(() => {
+      popupEditProfile.updateText(false)
+    })
 }
 
 function editProfileAvatar(item) {
@@ -161,6 +165,9 @@ function editProfileAvatar(item) {
     .catch((error) => {
       console.log(error)
     })
+    .finally(() => {
+      popupEditAvatar.updateText(false)
+    })
 }
 
 function createNewCard(item) {
@@ -173,6 +180,9 @@ function createNewCard(item) {
     })
     .catch((error) => {
       console.log(error)
+    })
+    .finally(() => {
+      popupAddCard.updateText(false)
     })
 }
 
@@ -192,21 +202,31 @@ function handleConfirmClick(item) {
     })
 }
 
-api
-  .getUserInfo()
-  .then((res) => {
-    userInfo.setUserInfo(res)
-    userId = res._id
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userId = userData._id
+    userInfo.setUserInfo(userData)
+    cardList.renderItems(cards.reverse())
   })
   .catch((error) => {
     console.log(error)
   })
 
-api
-  .getInitialCards()
-  .then((res) => {
-    cardList.renderItems(res)
-  })
-  .catch((error) => {
-    console.log(error)
-  })
+// api
+//   .getUserInfo()
+//   .then((res) => {
+//     userInfo.setUserInfo(res)
+//     userId = res._id
+//   })
+//   .catch((error) => {
+//     console.log(error)
+//   })
+
+// api
+//   .getInitialCards()
+//   .then((res) => {
+//     cardList.renderItems(res)
+//   })
+//   .catch((error) => {
+//     console.log(error)
+//   })

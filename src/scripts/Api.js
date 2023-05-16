@@ -31,7 +31,6 @@ export default class Api {
   }
 
   editUserPhoto(item) {
-    console.log(item)
     return fetch(`${this.url}/users/me/avatar`, {
       method: "PATCH",
       headers: this.headers,
