@@ -20,12 +20,12 @@ import {
 } from "../utils/const.js"
 
 // Создание формы добавления карточки
-const formValidatorCard = new FormValidator(options, options.addForm)
-formValidatorCard.enableValidation()
+const formValidatorCard = new FormValidator(options, options.addForm);
+formValidatorCard.enableValidation();
 
 // Создание формы редактирования профиля
-const formValidatorProfile = new FormValidator(options, options.editForm)
-formValidatorProfile.enableValidation()
+const formValidatorProfile = new FormValidator(options, options.editForm);
+formValidatorProfile.enableValidation();
 
 //Создание формы редактирования аватара
 const formValidatorAvatar = new FormValidator(options, options.avatarForm)
